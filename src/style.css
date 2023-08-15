@@ -1,0 +1,128 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: antiquewhite;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App{
+  width: 400px;
+  max-width: 90vw;
+  height: 100%;
+  background-color: #0B2434;
+  padding: 20px;
+}
+
+.App>main{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0;
+  position: relative;
+}
+
+.die-wrapper{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.Die>button{
+  padding: 8px 15px;
+  padding: 5px;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Die>button>div>span{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: block;
+  margin: 3px;
+}
+
+.roll-btn{
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  padding: 10px 30px;
+  border-radius: 6px;
+  background-color: #5035FF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.new-game-btn{
+  margin-top: 10px;
+  background-color: green;
+}
+
+.roll-btn:focus{
+  outline: none;
+}
+
+.roll-btn:hover{
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.die-timer{
+  padding: 3px 10px;
+  font-size: 0.8em;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #5035FF;
+  color: white;
+}
+
+.die-rolls{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.8em;
+}
+
+.die-besttime{
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  font-size: 0.7em;
+}
+
+.swal2-show{
+  width: 400px !important;
+  border: 2px solid #0B2434 !important;
+}
+
+.swal2-confirm{
+  background-color: #5035FF !important;
+}
