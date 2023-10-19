@@ -1,5 +1,6 @@
 {
-  "homepage": "http://taiwojoshua.github.io/tenzies",
+  "homepage": ".",
+  "github-homepage": "http://taiwojoshua.github.io/tenzies",
   "name": "project4-tenzies",
   "version": "0.1.0",
   "private": true,
