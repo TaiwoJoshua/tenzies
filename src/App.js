@@ -3,6 +3,7 @@ import Die from './components/Die';
 import {nanoid} from 'nanoid';
 import Confetti from 'react-confetti';
 import SweetAlert2 from 'sweetalert2-react';
+import { FaDice, FaHourglass, FaRotateLeft, FaTrophy } from 'react-icons/fa6';
 
 export default function App() {
   const [swalProps, setSwalProps] = React.useState({});
@@ -33,11 +34,18 @@ export default function App() {
   const displayTime = convertTime(timer);
 
   function rollDice(){
-    setDice(oldDice => {
-      return oldDice.map(die => {
-        return die.isHeld ? die : {...die, value: Math.floor(Math.random() * 6 + 1)};
+    let times = 0;
+    const rolling = setInterval(() => {
+      setDice(oldDice => {
+        return oldDice.map(die => {
+          return die.isHeld ? die : {...die, value: Math.floor(Math.random() * 6 + 1)};
+        });
       });
-    });
+      times++;
+      if(times === 10){
+        clearInterval(rolling);
+      }
+    }, 50);
 
     setCount(oldCount => oldCount + 1);
   }
@@ -103,11 +111,13 @@ export default function App() {
         <div className='die-wrapper'>
           {diceComponent}
         </div>
-        <button className='roll-btn' onClick={tenzies ? newGame : rollDice}>{tenzies ? "New Game" : "Roll"}</button>
-        {count > 0 && !tenzies && <button className='roll-btn new-game-btn' onClick={newGame}>Restart</button>}
-        <div className='die-rolls'>Rolls: {count}</div>
-        <div className='die-timer'>{displayTime}</div>
-        <div className='die-besttime'>Best Time: {bestTime}</div>
+        <div className='action-btn-wrap'>
+          <button className='roll-btn' onClick={tenzies ? newGame : rollDice} style={{backgroundColor: tenzies ? "green" : "#5035FF"}}>{tenzies ? <FaRotateLeft /> : <FaDice style={{fontSize: "1.5em"}} />}</button>
+          {count > 0 && !tenzies && <button className='roll-btn new-game-btn' onClick={newGame}><FaRotateLeft /></button>}
+        </div>
+        <div className='die-rolls'>Rolls: {count}<FaDice style={{marginLeft: "2px"}} /></div>
+        <div className='die-timer'><FaHourglass style={{marginRight: "2px", fontSize: "0.8em"}} /> {displayTime}</div>
+        <div className='die-besttime'>Best Time: {bestTime}<FaTrophy style={{color: "gold", margin: "0 0 0 2px"}} /></div>
       </main>
       {tenzies && <Confetti />}
 
