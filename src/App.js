@@ -38,7 +38,8 @@ export default function App() {
     const rolling = setInterval(() => {
       setDice(oldDice => {
         return oldDice.map(die => {
-          return die.isHeld ? die : {...die, value: Math.floor(Math.random() * 6 + 1)};
+          const rot = times === 10 ? 0 : Math.floor(Math.random() * 360);
+          return die.isHeld ? die : {...die, value: Math.floor(Math.random() * 6 + 1), rotate: rot};
         });
       });
       times++;
@@ -101,7 +102,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, [tenzies]);
 
-  const diceComponent = dice.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} handleClick={() => holdDice(die.id)} />);
+  const diceComponent = dice.map(die => <Die key={die.id} value={die.value} rotate={die.rotate} isHeld={die.isHeld} handleClick={() => holdDice(die.id)} />);
 
   return (
     <div className="App">
